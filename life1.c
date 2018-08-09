@@ -45,7 +45,7 @@ void game(int w, int h)
 	struct timespec TS;
 	TS.tv_nsec = 250000000;	TS.tv_sec = 0;  // 1/4 sec
 
-	for_xy univ[y][x] = rand() < RAND_MAX / 10 ? 1 : 0;
+	for_xy univ[y][x] = (rand() %2 == 1) ? 1 : 0;
 	while (1) {
 		show(univ, w, h);
 		evolve(univ, w, h);
@@ -59,7 +59,7 @@ int main(int c, char **v)
 	if (c > 1) w = atoi(v[1]);
 	if (c > 2) h = atoi(v[2]);
 	if (w <= 0) w = 60;
-	if (h <= 0) h = 40;
+	if (h <= 0) h = 25;
 	_CLEAR;
 	game(w, h);
 }
